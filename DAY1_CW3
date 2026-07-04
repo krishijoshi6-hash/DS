@@ -1,0 +1,42 @@
+l1 = []
+l2 = []
+l3 = []
+
+def enqueue():
+    n = input("ENTER TASK: ")
+    l1.append(n)
+
+def dequeue():
+    l2.clear()
+    l3.clear()
+
+    for i in l1:
+        if i == "urgent":
+            l2.append(i)
+        else:
+            l3.append(i)
+
+    print("URGENT TASKS")
+    print(l2)
+
+    print("NORMAL TASKS")
+    print(l3)
+
+while True:
+    print("\n1. ENQUEUE")
+    print("2. DEQUEUE")
+    print("3. EXIT")
+
+    ch = input("ENTER THE NUMBER: ")
+
+    if ch == "1":
+        enqueue()
+
+    elif ch == "2":
+        dequeue()
+
+    elif ch == "3":
+        break
+
+    else:
+        print("Invalid Choice!")
