@@ -1,0 +1,48 @@
+# H3) The GPS Navigation System (Backtracking)
+# You're building a GPS app like Google Maps for a hiking trail. The hiker moves through checkpoints. If they take a wrong turn, they hit "Go Back" to return to the previous checkpoint. But once they go back, they can also "Go Forward" if they change their mind again — just like a browser's back/forward buttons.
+# Operations:
+# visit(place) — move to a new place
+# back() — go to previous place
+# forward() — go forward if available
+
+
+back_stack = []
+forward_stack = []
+current = "HOME"
+while True:
+    print("\n1. VISIT PLACE")
+    print("2. GO BACK")
+    print("3. GO FORWARD")
+    print("4. CURRENT LOCATION")
+    print("5. EXIT")
+
+    choice = int(input("ENTER YOUR CHOICE: "))
+
+    if choice == 1:
+        place = input("ENTER PLACE: ")
+        back_stack.append(current)
+        current = place
+        forward_stack.clear()
+
+    elif choice == 2:
+        if back_stack:
+            forward_stack.append(current)
+            current = back_stack.pop()
+        else:
+            print("NO PREVIOUS LOCATION")
+
+    elif choice == 3:
+        if forward_stack:
+            back_stack.append(current)
+            current = forward_stack.pop()
+        else:
+            print("NO FORWARD LOCATION")
+
+    elif choice == 4:
+        print("CURRENT LOCATION:", current)
+
+    elif choice == 5:
+        break
+
+    else:
+        print("INVALID CHOICE")
