@@ -1,0 +1,68 @@
+# H2) Toll Plaza Simulation (Circular Queue)
+# A toll plaza has a fixed capacity of 5 vehicles. If full, new vehicles must wait.
+# Implement a Circular Queue to simulate this, since it reuses empty slots without wasting memory.
+
+MAX = 5
+
+queue = [None] * MAX
+
+front = -1
+rear = -1
+
+while True:
+
+    print("\n1. ENQUEUE VEHICLE")
+    print("2. DEQUEUE VEHICLE")
+    print("3. DISPLAY QUEUE")
+    print("4. EXIT")
+
+    choice = int(input("ENTER CHOICE: "))
+
+    if choice == 1:
+
+        vehicle = input("ENTER VEHICLE NUMBER: ")
+
+        if (rear + 1) % MAX == front:
+            print("QUEUE IS FULL")
+
+        else:
+            if front == -1:
+                front = rear = 0
+            else:
+                rear = (rear + 1) % MAX
+
+            queue[rear] = vehicle
+            print("VEHICLE ADDED")
+
+    elif choice == 2:
+
+        if front == -1:
+            print("QUEUE IS EMPTY")
+
+        else:
+            print("VEHICLE LEFT:", queue[front])
+
+            if front == rear:
+                front = rear = -1
+            else:
+                front = (front + 1) % MAX
+
+    elif choice == 3:
+
+        if front == -1:
+            print("QUEUE IS EMPTY")
+
+        else:
+            i = front
+            while True:
+                print(queue[i], end=" ")
+                if i == rear:
+                    break
+                i = (i + 1) % MAX
+            print()
+
+    elif choice == 4:
+        break
+
+    else:
+        print("INVALID CHOICE")
