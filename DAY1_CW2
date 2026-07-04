@@ -1,0 +1,25 @@
+l1=[]
+def enter():
+    n=int(input("ENTER THE STRING"))
+    for i in n:
+        l1.append(i)
+    print(l1)
+    
+def undo():
+    print("AFTER UNDO")
+    l1.pop()
+    print(l1)
+
+while True:
+    print("1.INSERT, 2 UNDO")
+    ch=input("ENTER THE NUMBER")
+    
+    if ch == "1":
+        enter()
+        
+    elif ch == "2":
+        undo()
+        
+    else:
+        break;
+        exit(0);
