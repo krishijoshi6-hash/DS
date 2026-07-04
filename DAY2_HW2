@@ -1,0 +1,16 @@
+num = int(input("ENTER THE NUMBER==>"))
+price = list(map(int, input("ENTER THE WORDS").split()))
+target = int(input())
+
+low = 0
+high = num - 1
+ans = -1
+
+while low <= high:
+    mid = (low + high) // 2
+
+    if price[mid] >= target:
+        ans = mid
+        high = mid - 1
+    else:
+        low = mid + 1
